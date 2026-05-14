@@ -9,7 +9,7 @@ export default withSpanAttributes(
   createManifestHandler({
     async manifestFactory({ appBaseUrl }) {
       const prefixedAppBaseUrl = `${appBaseUrl}${process.env.NEXT_PUBLIC_APP_BASE_PATH ?? ""}`;
-    const iframeBaseUrl = env.APP_IFRAME_BASE_URL ?? prefixedAppBaseUrl;
+      const iframeBaseUrl = env.APP_IFRAME_BASE_URL ?? prefixedAppBaseUrl;
       const apiBaseURL = env.APP_API_BASE_URL ?? prefixedAppBaseUrl;
 
       const manifest: AppManifest = {
