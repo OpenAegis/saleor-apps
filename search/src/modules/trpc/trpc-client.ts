@@ -7,10 +7,11 @@ import { appBridgeInstance } from "../../pages/_app";
 import type { AppRouter } from "./trpc-app-router";
 
 function getBaseUrl() {
-  if (typeof window !== "undefined") return "";
-  if (env.VERCEL_URL) return `https://${env.VERCEL_URL}`;
+  const appBasePath = process.env.NEXT_PUBLIC_APP_BASE_PATH ?? "";
+  if (typeof window !== "undefined") return appBasePath;
+  if (env.VERCEL_URL) return `https://${env.VERCEL_URL}${appBasePath}`;
 
-  return `http://localhost:${env.PORT}`;
+  return `http://localhost:${env.PORT}${appBasePath}`;
 }
 
 export const trpcClient = createTRPCNext<AppRouter>({

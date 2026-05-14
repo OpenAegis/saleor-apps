@@ -2,10 +2,16 @@ import withBundleAnalyzerConfig from "@next/bundle-analyzer";
 import { withSentryConfig } from "@sentry/nextjs";
 import { type NextConfig } from "next";
 
+const appBasePath = process.env.DEPLOY_ALL_APPS === "true" ? "/avatax" : "";
+
 // cache request for 1 day (in seconds) + revalidate once 60 seconds
 const cacheValue = "private,s-maxage=60,stale-while-revalidate=86400";
 
 const nextConfig: NextConfig = {
+  basePath: appBasePath || undefined,
+  env: {
+    NEXT_PUBLIC_APP_BASE_PATH: appBasePath,
+  },
   async headers() {
     return [
       {

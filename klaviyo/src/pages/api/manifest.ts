@@ -15,8 +15,9 @@ const handler = wrapWithLoggerContext(
   withSpanAttributes(
     createManifestHandler({
       async manifestFactory({ appBaseUrl }): Promise<AppManifest> {
-        const iframeBaseUrl = env.APP_IFRAME_BASE_URL ?? appBaseUrl;
-        const apiBaseURL = env.APP_API_BASE_URL ?? appBaseUrl;
+        const prefixedAppBaseUrl = `${appBaseUrl}${process.env.NEXT_PUBLIC_APP_BASE_PATH ?? ""}`;
+        const iframeBaseUrl = env.APP_IFRAME_BASE_URL ?? prefixedAppBaseUrl;
+        const apiBaseURL = env.APP_API_BASE_URL ?? prefixedAppBaseUrl;
 
         return {
           about: "Klaviyo integration allows sending Klaviyo notifications on Saleor events.",
@@ -37,10 +38,10 @@ const handler = wrapWithLoggerContext(
           tokenTargetUrl: `${apiBaseURL}/api/register`,
           version: pkg.version,
           webhooks: [
-            customerCreatedWebhook.getWebhookManifest(appBaseUrl),
-            fulfillmentCreatedWebhook.getWebhookManifest(appBaseUrl),
-            orderCreatedWebhook.getWebhookManifest(appBaseUrl),
-            orderFullyPaidWebhook.getWebhookManifest(appBaseUrl),
+            customerCreatedWebhook.getWebhookManifest(apiBaseURL),
+            fulfillmentCreatedWebhook.getWebhookManifest(apiBaseURL),
+            orderCreatedWebhook.getWebhookManifest(apiBaseURL),
+            orderFullyPaidWebhook.getWebhookManifest(apiBaseURL),
           ],
         };
       },

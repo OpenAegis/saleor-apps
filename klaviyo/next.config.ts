@@ -1,7 +1,13 @@
 import { withSentryConfig } from "@sentry/nextjs";
 import { NextConfig } from "next";
 
+const appBasePath = process.env.DEPLOY_ALL_APPS === "true" ? "/klaviyo" : "";
+
 const nextConfig: NextConfig = {
+  basePath: appBasePath || undefined,
+  env: {
+    NEXT_PUBLIC_APP_BASE_PATH: appBasePath,
+  },
   reactStrictMode: true,
   transpilePackages: [
     "@saleor/apps-shared",
