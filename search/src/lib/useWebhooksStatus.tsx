@@ -4,11 +4,13 @@ import { useCallback } from "react";
 
 import { type WebhooksStatusResponse } from "../pages/api/webhooks-status";
 
+const appBasePath = process.env.NEXT_PUBLIC_APP_BASE_PATH ?? "";
+
 export const useWebhooksStatus = () => {
   const fetch: typeof window.fetch = useAuthenticatedFetch();
 
   const fetchFn = useCallback(() => {
-    return fetch("/api/webhooks-status").then((resp) => resp.json());
+    return fetch(`${appBasePath}/api/webhooks-status`).then((resp) => resp.json());
     /**
      * fetch from SDK is not wrapped with memo todo
      */

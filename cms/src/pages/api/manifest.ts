@@ -14,8 +14,9 @@ import { productVariantUpdatedWebhook } from "./webhooks/product-variant-updated
 
 const handler = createManifestHandler({
   async manifestFactory({ appBaseUrl }) {
-    const iframeBaseUrl = env.APP_IFRAME_BASE_URL ?? appBaseUrl;
-    const apiBaseURL = env.APP_API_BASE_URL ?? appBaseUrl;
+    const prefixedAppBaseUrl = `${appBaseUrl}${process.env.NEXT_PUBLIC_APP_BASE_PATH ?? ""}`;
+    const iframeBaseUrl = env.APP_IFRAME_BASE_URL ?? prefixedAppBaseUrl;
+    const apiBaseURL = env.APP_API_BASE_URL ?? prefixedAppBaseUrl;
 
     const manifest: AppManifest = {
       about:

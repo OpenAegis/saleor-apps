@@ -16,8 +16,9 @@ import { transactionRefundRequestedWebhookDefinition } from "../webhooks/saleor/
 
 const handler = createManifestHandler({
   async manifestFactory({ appBaseUrl }) {
-    const iframeBaseUrl = env.APP_IFRAME_BASE_URL ?? appBaseUrl;
-    const apiBaseUrl = env.APP_API_BASE_URL ?? appBaseUrl;
+    const prefixedAppBaseUrl = `${appBaseUrl}${process.env.NEXT_PUBLIC_APP_BASE_PATH ?? ""}`;
+    const iframeBaseUrl = env.APP_IFRAME_BASE_URL ?? prefixedAppBaseUrl;
+    const apiBaseUrl = env.APP_API_BASE_URL ?? prefixedAppBaseUrl;
 
     const manifest: AppManifest = {
       about:

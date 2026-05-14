@@ -3,12 +3,14 @@ import { useDashboardNotification } from "@saleor/apps-shared/use-dashboard-noti
 import { useMutation } from "@tanstack/react-query";
 import { useCallback } from "react";
 
+const appBasePath = process.env.NEXT_PUBLIC_APP_BASE_PATH ?? "";
+
 export const useIndicesSetupMutation = () => {
   const fetch: typeof window.fetch = useAuthenticatedFetch();
   const { notifyError, notifySuccess } = useDashboardNotification();
 
   const mutationFn = useCallback(() => {
-    return fetch("/api/setup-indices", { method: "POST" }).then((resp) => {
+    return fetch(`${appBasePath}/api/setup-indices`, { method: "POST" }).then((resp) => {
       if (resp.ok) {
         notifySuccess("Settings have been updated");
       } else {
