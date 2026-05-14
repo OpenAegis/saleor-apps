@@ -47,26 +47,6 @@
       "use": "@vercel/next"
     }
   ],
-  "functions": {
-    "cms/src/pages/api/webhooks/*.*": {
-      "memory": 512
-    },
-    "products-feed/src/pages/api/feed/**/*": {
-      "memory": 3008,
-      "maxDuration": 300
-    },
-    "search/src/pages/api/webhooks/saleor/**/*": {
-      "memory": 512
-    },
-    "segment/src/pages/api/webhooks/*": {
-      "memory": 256,
-      "maxDuration": 15
-    },
-    "smtp/src/pages/api/webhooks/*": {
-      "memory": 512,
-      "maxDuration": 25
-    }
-  },
   "regions": ["dub1", "iad1"],
   "routes": [
     {
