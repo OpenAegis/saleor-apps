@@ -5,5 +5,5 @@
       "memory": 512
     }
   },
-  "regions": ["dub1", "iad1"]
+  "regions": ["fra1"]
 }

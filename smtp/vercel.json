@@ -6,8 +6,5 @@
       "maxDuration": 25
     }
   },
-  "regions": [
-    "dub1",
-    "iad1"
-  ]
+  "regions": ["fra1"]
 }

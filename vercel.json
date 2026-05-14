@@ -47,7 +47,7 @@
       "use": "@vercel/next"
     }
   ],
-  "regions": ["dub1", "iad1"],
+  "regions": ["fra1"],
   "routes": [
     {
       "src": "/",
