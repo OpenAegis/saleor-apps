@@ -57,6 +57,42 @@
       }
     },
     {
+      "src": "/avatax(.*)",
+      "dest": "avatax"
+    },
+    {
+      "src": "/cms(.*)",
+      "dest": "cms"
+    },
+    {
+      "src": "/klaviyo(.*)",
+      "dest": "klaviyo"
+    },
+    {
+      "src": "/np-atobarai(.*)",
+      "dest": "np-atobarai"
+    },
+    {
+      "src": "/products-feed(.*)",
+      "dest": "products-feed"
+    },
+    {
+      "src": "/search(.*)",
+      "dest": "search"
+    },
+    {
+      "src": "/segment(.*)",
+      "dest": "segment"
+    },
+    {
+      "src": "/smtp(.*)",
+      "dest": "smtp"
+    },
+    {
+      "src": "/stripe(.*)",
+      "dest": "stripe"
+    },
+    {
       "handle": "filesystem"
     }
   ]
